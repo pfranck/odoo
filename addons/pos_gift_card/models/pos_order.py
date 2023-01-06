@@ -28,7 +28,7 @@ class PosOrder(models.Model):
                             new_card.partner_id = order.partner_id or False
                             line.generated_gift_card_ids = new_card
                         else:
-                            gift_card = self.env["gift.card"].search(
+                            gift_card = self.sudo().env["gift.card"].search(
                                 [("id", "=", line.generated_gift_card_ids.id)]
                             )
                             gift_card.buy_pos_order_line_id = line.id
